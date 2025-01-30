@@ -11,6 +11,7 @@ public class FileEncrypter {
     private static final int BUFFER_SIZE = 1024;
     private static final int END_OF_FILE = -1;
     private static final String ALGORITHM = "AES";
+    private static final int KEY_SIZE = 128;
     private static final String TRANSFORMATION = "AES/ECB/PKCS5Padding";
     private static final int CIPHER_MODE = Cipher.ENCRYPT_MODE;
     private final String inputFilePath;
@@ -49,7 +50,7 @@ public class FileEncrypter {
     // Generate secret key to use in algorithm
     private SecretKey generateAESKey() throws Exception {
         KeyGenerator secretKey = KeyGenerator.getInstance(ALGORITHM);
-        secretKey.init(128);
+        secretKey.init(KEY_SIZE);
         return secretKey.generateKey();
     }
 

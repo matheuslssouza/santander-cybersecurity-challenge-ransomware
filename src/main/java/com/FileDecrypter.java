@@ -1,4 +1,5 @@
 package com;
 
-public class FileDecrypt {
+public class FileDecrypter {
+
 }
