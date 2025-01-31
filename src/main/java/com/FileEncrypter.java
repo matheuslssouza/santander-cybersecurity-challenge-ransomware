@@ -5,6 +5,9 @@ import javax.crypto.CipherOutputStream;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Base64;
 
 public class FileEncrypter {
 
@@ -22,22 +25,26 @@ public class FileEncrypter {
     public FileEncrypter(String inputFilePath) {
         this.inputFilePath = inputFilePath.replace('\\', '/');
         this.outputFilePath = this.inputFilePath + ".enc";
-        processFile();
+        encryptFile();
     }
 
     // Process File to Encrypt
-    public void processFile() {
+    public void encryptFile() {
         try {
             FileInputStream fis = new FileInputStream(inputFilePath);
             FileOutputStream fos = new FileOutputStream(outputFilePath);
 
             SecretKey AESGeneratedKey = generateAESKey();
+            String encodedKey = Base64.getEncoder().encodeToString(AESGeneratedKey.getEncoded());
+            System.out.println("Secret Key (Base64): " + encodedKey);
+
             Cipher cipher = createCipher(CIPHER_MODE, AESGeneratedKey);
             CipherOutputStream cos = new CipherOutputStream(fos, cipher);
 
             byte[] buffer = new byte[BUFFER_SIZE];
             int bytesRead;
 
+            // Write the data encrypted for another document
             while ((bytesRead = fis.read(buffer)) != END_OF_FILE) {
                 cos.write(buffer, 0, bytesRead);
             }
@@ -48,6 +55,7 @@ public class FileEncrypter {
             fos.close();
             fis.close();
 
+            Files.deleteIfExists(Path.of(inputFilePath));
 
         } catch (Exception e) {
             System.err.println("Error processing file: " + e.getMessage());
@@ -69,3 +77,4 @@ public class FileEncrypter {
     }
 
 }
+
