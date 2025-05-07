@@ -42,17 +42,17 @@ Press 1 for encrypt, 2 for decrypt and 3 for exit:
 
 3: Encerra o programa.
 
-🛠️ Requisitos
+### 🛠️ Requisitos
 Java 8 ou superior
 
 Terminal ou IDE compatível com Java (como Eclipse, IntelliJ ou VSCode com plugin Java)
 
-🔒 Observações sobre Segurança
+### 🔒 Observações sobre Segurança
 A chave usada na criptografia deve ser guardada com segurança. Sem ela, os arquivos criptografados não poderão ser recuperados.
 
-O algoritmo de criptografia usado nas classes FileEncrypter e FileDecrypter deve seguir boas práticas (ex: AES, chave de 128 ou 256 bits). Certifique-se disso ao implementar.
+O algoritmo de criptografia usado nas classes FileEncrypter e FileDecrypter é do tipo AES.
 
-📂 Exemplo de Caminho de Arquivo
+### 📂 Exemplo de Caminho de Arquivo
 C:/Users/Documentos/Ransomware/teste.txt
 Após a criptografia, será criado um arquivo com extensão .enc, como:
 
