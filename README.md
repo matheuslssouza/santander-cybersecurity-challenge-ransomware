@@ -24,8 +24,8 @@ src/
 
 ```bash
 javac Main.java FileEncrypter.java FileDecrypter.java
-Execute o programa:
 ```
+Execute o programa:
 
 ```bash
 java Main
