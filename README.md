@@ -9,8 +9,11 @@ Este é um programa Java simples de linha de comando para **criptografar e descr
 ## 📦 Estrutura do Projeto
 
 src/
+
 ├── Main.java
+
 ├── FileEncrypter.java
+
 └── FileDecrypter.java
 
 ---
